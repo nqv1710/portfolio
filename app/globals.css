@@ -21,13 +21,14 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Offset for the sticky navbar */
+    scroll-padding-top: 100px;
+    /* Offset for the sticky navbar */
   }
 
   body {
     background-color: var(--bg-dark);
     color: var(--text-main);
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-outfit), sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -36,7 +37,12 @@
     padding: 0;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 800;
     line-height: 1.2;
     margin: 0;
@@ -113,7 +119,8 @@
     position: relative;
   }
 
-  .nav-link:hover, .nav-link.active {
+  .nav-link:hover,
+  .nav-link.active {
     color: var(--accent-cyan);
   }
 
@@ -181,11 +188,11 @@
     display: grid;
     gap: 2rem;
   }
-  
+
   .grid-cols-2-custom {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  
+
   .grid-cols-3-custom {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
@@ -209,7 +216,7 @@
     display: inline-block;
     width: 50px;
     height: 50px;
-    border: 3px solid rgba(255,255,255,0.1);
+    border: 3px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     border-top-color: var(--accent-cyan);
     animation: spin 1s ease-in-out infinite;
@@ -226,10 +233,19 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
