@@ -1,15 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ExternalLink, Briefcase, Code2, Layers, Cpu, Server, Database, Mail } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import { ExternalLink, Briefcase, Code2, Layers, Cpu, Server, Database, Mail, Download } from 'lucide-react';
 import ContactForm from './components/ContactForm';
 
-const FADE_UP = {
+const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring" } }
 };
 
-const STAGGER = {
+const STAGGER: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -51,9 +51,20 @@ export default function HomePage() {
           <motion.a 
             whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(157, 78, 221, 0.5)' }}
             whileTap={{ scale: 0.95 }}
-            href="#experience" 
+            href="/Nguyen_Quoc_Viet_CV.pdf" 
+            download="Nguyen_Quoc_Viet_CV.pdf"
             className="btn btn-primary"
             style={{ borderRadius: '12px' }}
+          >
+            <Download size={20} /> Download CV
+          </motion.a>
+
+          <motion.a 
+            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
+            whileTap={{ scale: 0.95 }}
+            href="#experience" 
+            className="btn"
+            style={{ borderRadius: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-color)' }}
           >
             <Briefcase size={20} /> View Experience
           </motion.a>
