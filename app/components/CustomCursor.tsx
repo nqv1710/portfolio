@@ -6,6 +6,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(true); // default true to avoid flash on SSR
 
   // High-performance motion values that bypass React state renders
   const cursorX = useMotionValue(-100);
@@ -17,6 +18,18 @@ export default function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Check for touch/mobile — only show cursor on pointer devices
+    const mq = window.matchMedia('(pointer: fine) and (min-width: 769px)');
+    setIsTouchDevice(!mq.matches);
+
+    const handleMQChange = (e: MediaQueryListEvent) => setIsTouchDevice(!e.matches);
+    mq.addEventListener('change', handleMQChange);
+    return () => mq.removeEventListener('change', handleMQChange);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     const moveCursor = (e: MouseEvent) => {
       if (!isVisible) setIsVisible(true);
       cursorX.set(e.clientX);
@@ -38,12 +51,10 @@ export default function CustomCursor() {
       window.removeEventListener('mousemove', moveCursor);
       document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY, isVisible, isTouchDevice]);
 
-  if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
-    // Disable on mobile devices
-    return null;
-  }
+  // Don't render on touch/mobile devices
+  if (isTouchDevice) return null;
 
   return (
     <motion.div
@@ -73,3 +84,4 @@ export default function CustomCursor() {
     />
   );
 }
+
