@@ -21,7 +21,6 @@ export default function HomePage() {
   return (
     <div className="container-custom" style={{ paddingBottom: '5rem' }}>
       
-      {/* 🚀 HERO SECTION */}
       <motion.section 
         initial="hidden" 
         animate="show" 
@@ -34,7 +33,6 @@ export default function HomePage() {
           justifyContent: 'center', 
           paddingTop: 'clamp(3rem, 8vh, 6rem)',
           position: 'relative',
-          overflow: 'hidden',
         }}
       >
         <motion.div 
