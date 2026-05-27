@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { ExternalLink, Briefcase, Code2, Layers, Cpu, Server, Database, Mail, Download } from 'lucide-react';
+import { ExternalLink, Briefcase, Code2, Layers, Cpu, Server, Database, Mail, Download, ArrowRight } from 'lucide-react';
 import ContactForm from './components/ContactForm';
 
 const FADE_UP: Variants = {
@@ -19,160 +19,103 @@ const STAGGER: Variants = {
 
 export default function HomePage() {
   return (
-    <div className="container-custom" style={{ paddingBottom: '5rem' }}>
+    <div className="container-custom pb-20">
       
+      {/* 🚀 HERO SECTION */}
       <motion.section 
         initial="hidden" 
         animate="show" 
         variants={STAGGER}
         id="about" 
-        style={{ 
-          minHeight: '90vh', 
-          display: 'flex', 
-          flexDirection: 'column', 
-          justifyContent: 'center', 
-          paddingTop: 'clamp(3rem, 8vh, 6rem)',
-          position: 'relative',
-        }}
+        className="min-h-[90vh] flex flex-col justify-center pt-[clamp(3rem,8vh,6rem)] relative"
       >
         <motion.div 
           variants={FADE_UP} 
-          style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '0.8rem', 
-            padding: '0.5rem 1rem', 
-            background: 'rgba(76, 201, 240, 0.1)', 
-            color: 'var(--accent-cyan)', 
-            border: '1px solid rgba(76, 201, 240, 0.3)', 
-            borderRadius: '30px', 
-            fontWeight: 600, 
-            marginBottom: '1.5rem', 
-            width: 'max-content',
-            maxWidth: '100%',
-          }}
+          className="flex items-center gap-3 px-4 py-2 bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/30 rounded-full font-semibold mb-6 w-max max-w-full"
         >
-          <div style={{ width: '8px', height: '8px', flexShrink: 0, borderRadius: '50%', backgroundColor: 'var(--accent-cyan)', boxShadow: '0 0 10px var(--accent-cyan)' }} className="animate-pulse" />
+          <div className="w-2 h-2 shrink-0 rounded-full bg-accent-cyan shadow-[0_0_10px_var(--color-accent-cyan)] animate-pulse" />
           Available for new opportunities
         </motion.div>
 
         <motion.h1 
           variants={FADE_UP} 
-          style={{ marginBottom: '0.5rem', lineHeight: '1.1' }}
+          className="mb-2 leading-tight"
         >
           Nguyễn Quốc Việt
         </motion.h1>
         
         <motion.h2 
           variants={FADE_UP} 
-          style={{ 
-            fontSize: 'clamp(1.2rem, 3.5vw, 2.5rem)', 
-            color: 'var(--text-main)', 
-            marginBottom: '1.5rem', 
-            fontWeight: 600, 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '0.75rem',
-            flexWrap: 'wrap',
-          }}
+          className="text-[clamp(1.2rem,3.5vw,2.5rem)] text-[var(--text-main)] mb-6 font-semibold flex items-center gap-3 flex-wrap"
         >
-          <Code2 size={28} color="var(--accent-purple)" style={{ flexShrink: 0 }}/> 
+          <Code2 size={28} className="text-accent-purple shrink-0"/> 
           Full-stack Web Developer
         </motion.h2>
 
         <motion.p 
           variants={FADE_UP} 
-          style={{ 
-            fontSize: 'clamp(1rem, 2vw, 1.2rem)', 
-            maxWidth: '700px', 
-            marginBottom: 'clamp(2rem, 4vh, 3rem)', 
-            color: 'var(--text-muted)' 
-          }}
+          className="text-[clamp(1rem,2vw,1.2rem)] max-w-[700px] mb-[clamp(2rem,4vh,3rem)] text-[var(--text-muted)]"
         >
           I build high-performance, scalable web applications with a focus on robust backend architecture. Specialized in{' '}
-          <span style={{ color: '#ff2d20', fontWeight: 600 }}>Laravel</span> and interactive{' '}
-          <span style={{ color: '#41b883', fontWeight: 600 }}>Vue.js/React</span> interfaces. Bridging the gap between design and deep logic.
+          <span className="text-[#ff2d20] font-semibold">Laravel</span> and interactive{' '}
+          <span className="text-[#41b883] font-semibold">Vue.js/React</span> interfaces. Bridging the gap between design and deep logic.
         </motion.p>
         
-        {/* CTA Buttons — wraps gracefully on mobile */}
+        {/* CTA Buttons - Streamlined UX */}
         <motion.div 
           variants={FADE_UP} 
-          style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}
+          className="flex gap-4 flex-wrap items-center"
         >
           <motion.a 
             whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(157, 78, 221, 0.5)' }}
             whileTap={{ scale: 0.95 }}
+            href="#projects" 
+            className="btn btn-primary rounded-xl"
+          >
+            View My Work <ArrowRight size={18} />
+          </motion.a>
+
+          <motion.a 
+            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
+            whileTap={{ scale: 0.95 }}
             href="/Nguyen_Quoc_Viet_CV.pdf" 
             download="Nguyen_Quoc_Viet_CV.pdf"
-            className="btn btn-primary"
-            style={{ borderRadius: '12px' }}
+            className="btn rounded-xl bg-white/5 border border-white/10"
           >
             <Download size={18} /> Download CV
           </motion.a>
-
-          <motion.a 
-            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            whileTap={{ scale: 0.95 }}
-            href="#experience" 
-            className="btn"
-            style={{ borderRadius: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-color)' }}
-          >
-            <Briefcase size={18} /> Experience
-          </motion.a>
           
-          <motion.a 
-            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            whileTap={{ scale: 0.95 }}
-            href="https://github.com/nqv1710" 
-            target="_blank" rel="noreferrer" 
-            className="btn" 
-            style={{ borderRadius: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-color)' }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"/><path d="M12 18a1 1 0 0 0-1 1v3"/></svg>
-            GitHub
-          </motion.a>
+          <div className="flex items-center gap-2 ml-2">
+            <motion.a 
+              whileHover={{ scale: 1.1, y: -2 }}
+              href="https://github.com/nqv1710" 
+              target="_blank" rel="noreferrer" 
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-[var(--text-muted)] hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"/><path d="M12 18a1 1 0 0 0-1 1v3"/></svg>
+            </motion.a>
 
-          <motion.a 
-            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            whileTap={{ scale: 0.95 }}
-            href="https://linkedin.com/in/nqv171002" 
-            target="_blank" rel="noreferrer" 
-            className="btn" 
-            style={{ borderRadius: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-color)' }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </motion.a>
+            <motion.a 
+              whileHover={{ scale: 1.1, y: -2 }}
+              href="https://linkedin.com/in/nqv171002" 
+              target="_blank" rel="noreferrer" 
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-[var(--text-muted)] hover:text-accent-cyan transition-colors"
+              aria-label="LinkedIn"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </motion.a>
+          </div>
         </motion.div>
         
-        {/* Decorative ambient gradient — contained, no overflow */}
+        {/* Decorative ambient gradient */}
         <div 
           aria-hidden="true"
-          style={{ 
-            position: 'absolute', 
-            right: 0, 
-            top: '15%', 
-            width: 'min(500px, 60vw)', 
-            height: 'min(500px, 60vw)', 
-            background: 'radial-gradient(circle, rgba(157, 78, 221, 0.12) 0%, transparent 70%)', 
-            zIndex: -1, 
-            pointerEvents: 'none',
-            transform: 'translateX(30%)',
-          }} 
+          className="absolute right-0 top-[15%] w-[min(500px,60vw)] h-[min(500px,60vw)] bg-[radial-gradient(circle,rgba(157,78,221,0.12)_0%,transparent_70%)] -z-10 pointer-events-none translate-x-[30%]"
         />
         <div 
           aria-hidden="true"
-          style={{ 
-            position: 'absolute', 
-            left: 0, 
-            bottom: '10%', 
-            width: 'min(400px, 50vw)', 
-            height: 'min(400px, 50vw)', 
-            background: 'radial-gradient(circle, rgba(76, 201, 240, 0.07) 0%, transparent 70%)', 
-            zIndex: -1, 
-            pointerEvents: 'none',
-            transform: 'translateX(-40%)',
-          }} 
+          className="absolute left-0 bottom-[10%] w-[min(400px,50vw)] h-[min(400px,50vw)] bg-[radial-gradient(circle,rgba(76,201,240,0.07)_0%,transparent_70%)] -z-10 pointer-events-none -translate-x-[40%]"
         />
       </motion.section>
 
@@ -183,38 +126,37 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-80px" }}
         variants={STAGGER}
         id="skills" 
-        style={{ paddingTop: 'clamp(3rem, 6vh, 5rem)', marginBottom: 'clamp(4rem, 8vh, 8rem)' }}
+        className="pt-[clamp(3rem,6vh,5rem)] mb-[clamp(4rem,8vh,8rem)]"
       >
         <motion.div 
           variants={FADE_UP} 
-          style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: 'clamp(2rem, 4vh, 3rem)', flexWrap: 'wrap' }}
+          className="flex items-center gap-4 mb-[clamp(2rem,4vh,3rem)] flex-wrap"
         >
-          <Layers size={36} color="var(--accent-cyan)" style={{ flexShrink: 0 }} />
-          <h2 className="section-heading" style={{ color: 'var(--text-main)' }}>
-            Technical <span style={{ color: 'var(--accent-cyan)' }}>Arsenal</span>
+          <Layers size={36} className="text-accent-cyan shrink-0" />
+          <h2 className="section-heading text-[var(--text-main)]">
+            Technical <span className="text-accent-cyan">Arsenal</span>
           </h2>
         </motion.div>
 
         <div className="grid-custom grid-cols-3-custom">
           {[
-            { title: 'Frontend Engineering', icon: <Cpu size={24} color="var(--accent-cyan)" />, skills: ['Vue.js', 'ReactJS', 'JavaScript', 'HTML5/CSS3', 'Tailwind', 'Bootstrap'] },
-            { title: 'Backend Systems', icon: <Server size={24} color="var(--accent-purple)" />, skills: ['PHP (Laravel)', 'RESTful APIs', 'Node.js', 'MVC Pattern', 'Auth (JWT/Roles)'] },
-            { title: 'Data & DevOps', icon: <Database size={24} color="var(--accent-blue)" />, skills: ['PostgreSQL', 'MySQL', 'Redis', 'Docker / K8s', 'Git', 'Linux / Nginx'] }
+            { title: 'Frontend Engineering', icon: <Cpu size={24} className="text-accent-cyan" />, skills: ['Vue.js', 'ReactJS', 'JavaScript', 'HTML5/CSS3', 'Tailwind', 'Bootstrap'] },
+            { title: 'Backend Systems', icon: <Server size={24} className="text-accent-purple" />, skills: ['PHP (Laravel)', 'RESTful APIs', 'Node.js', 'MVC Pattern', 'Auth (JWT/Roles)'] },
+            { title: 'Data & DevOps', icon: <Database size={24} className="text-accent-blue" />, skills: ['PostgreSQL', 'MySQL', 'Redis', 'Docker / K8s', 'Git', 'Linux / Nginx'] }
           ].map((category) => (
             <motion.div 
               key={category.title}
               variants={FADE_UP}
-              whileHover={{ y: -8, borderColor: 'var(--accent-cyan)', boxShadow: '0 10px 40px rgba(76, 201, 240, 0.1)' }}
-              className="glass-card" 
-              style={{ borderRadius: '20px', border: '1px solid rgba(255,255,255,0.08)' }}
+              whileHover={{ y: -8, borderColor: 'var(--color-accent-cyan)', boxShadow: '0 10px 40px rgba(76, 201, 240, 0.1)' }}
+              className="glass-card rounded-[20px] border border-white/10"
             >
-              <div style={{ marginBottom: '1.2rem', padding: '0.8rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', width: 'max-content' }}>
+              <div className="mb-5 p-3 bg-white/5 rounded-xl w-max">
                 {category.icon}
               </div>
-              <h3 style={{ marginBottom: '1.2rem', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>{category.title}</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <h3 className="mb-5 text-[clamp(1.1rem,2vw,1.4rem)]">{category.title}</h3>
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map(skill => (
-                  <span key={skill} style={{ padding: '0.4rem 0.9rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '30px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  <span key={skill} className="px-3 py-1.5 bg-white/5 border border-white/5 rounded-full text-sm text-[var(--text-muted)]">
                     {skill}
                   </span>
                 ))}
@@ -231,20 +173,20 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-80px" }}
         variants={STAGGER}
         id="experience" 
-        style={{ paddingTop: 'clamp(2rem, 4vh, 3rem)', marginBottom: 'clamp(4rem, 8vh, 8rem)' }}
+        className="pt-[clamp(2rem,4vh,3rem)] mb-[clamp(4rem,8vh,8rem)]"
       >
         <motion.div 
           variants={FADE_UP} 
-          style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: 'clamp(2rem, 4vh, 4rem)', flexWrap: 'wrap' }}
+          className="flex items-center gap-4 mb-[clamp(2rem,4vh,4rem)] flex-wrap"
         >
-          <Briefcase size={36} color="var(--accent-purple)" style={{ flexShrink: 0 }} />
-          <h2 className="section-heading" style={{ color: 'var(--text-main)' }}>
-            Work <span style={{ color: 'var(--accent-purple)' }}>Experience</span>
+          <Briefcase size={36} className="text-accent-purple shrink-0" />
+          <h2 className="section-heading text-[var(--text-main)]">
+            Work <span className="text-accent-purple">Experience</span>
           </h2>
         </motion.div>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', position: 'relative' }}>
-          {/* Vertical Timeline Line — desktop only via media query class */}
+        <div className="flex flex-col gap-6 relative">
+          {/* Vertical Timeline Line */}
           <div className="timeline-line" />
 
           {[
@@ -272,29 +214,28 @@ export default function HomePage() {
             >
               {/* Timeline Node */}
               <div className="timeline-node">
-                <div style={{ width: '54px', height: '54px', borderRadius: '50%', background: 'rgba(157, 78, 221, 0.1)', border: '2px solid var(--accent-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--accent-purple)', boxShadow: '0 0 15px var(--accent-purple)' }} />
+                <div className="w-[54px] h-[54px] rounded-full bg-accent-purple/10 border-2 border-accent-purple flex items-center justify-center shrink-0">
+                  <div className="w-3 h-3 rounded-full bg-accent-purple shadow-[0_0_15px_var(--color-accent-purple)]" />
                 </div>
               </div>
 
               {/* Job Card */}
               <motion.div 
-                whileHover={{ borderColor: 'var(--accent-purple)', background: 'rgba(255,255,255,0.06)' }}
-                className="glass-card" 
-                style={{ flex: 1, borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)', minWidth: 0 }}
+                whileHover={{ borderColor: 'var(--color-accent-purple)', backgroundColor: 'rgba(255,255,255,0.06)' }}
+                className="glass-card flex-1 rounded-[20px] border border-white/5 min-w-0"
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem', alignItems: 'flex-start' }}>
-                  <h3 style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)', fontWeight: 800, minWidth: 0 }}>{job.role}</h3>
-                  <span style={{ padding: '0.4rem 0.9rem', background: 'rgba(157, 78, 221, 0.1)', color: 'var(--accent-purple)', borderRadius: '20px', fontWeight: 600, fontSize: '0.85rem', flexShrink: 0 }}>
+                <div className="flex justify-between flex-wrap gap-2 mb-2 items-start">
+                  <h3 className="text-[clamp(1.1rem,2.5vw,1.6rem)] font-extrabold min-w-0">{job.role}</h3>
+                  <span className="px-3.5 py-1.5 bg-accent-purple/10 text-accent-purple rounded-full font-semibold text-sm shrink-0">
                     {job.date}
                   </span>
                 </div>
-                <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '1.2rem', fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', fontWeight: 600 }}>{job.company}</h4>
+                <h4 className="text-accent-cyan mb-5 text-[clamp(1rem,1.8vw,1.15rem)] font-semibold">{job.company}</h4>
                 
-                <ul style={{ paddingLeft: '1.2rem', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', lineHeight: '1.6' }}>
-                  <li style={{ listStyleType: 'disc' }}>{job.bullet1}</li>
-                  <li style={{ listStyleType: 'disc' }}>{job.bullet2}</li>
-                  <li style={{ listStyleType: 'disc' }}>{job.bullet3}</li>
+                <ul className="pl-5 text-[var(--text-muted)] flex flex-col gap-3 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed list-disc">
+                  <li>{job.bullet1}</li>
+                  <li>{job.bullet2}</li>
+                  <li>{job.bullet3}</li>
                 </ul>
               </motion.div>
             </motion.div>
@@ -309,54 +250,84 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-80px" }}
         variants={STAGGER}
         id="projects" 
-        style={{ paddingTop: 'clamp(2rem, 4vh, 3rem)', paddingBottom: 'clamp(2rem, 4vh, 3rem)' }}
+        className="py-[clamp(2rem,4vh,3rem)]"
       >
         <motion.div 
           variants={FADE_UP} 
-          style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: 'clamp(2rem, 4vh, 4rem)', flexWrap: 'wrap' }}
+          className="flex items-center gap-4 mb-[clamp(2rem,4vh,4rem)] flex-wrap"
         >
-          <Code2 size={36} color="var(--accent-blue)" style={{ flexShrink: 0 }} />
-          <h2 className="section-heading" style={{ color: 'var(--text-main)' }}>
-            Featured <span style={{ color: 'var(--accent-blue)' }}>Projects</span>
+          <Code2 size={36} className="text-accent-blue shrink-0" />
+          <h2 className="section-heading text-[var(--text-main)]">
+            Featured <span className="text-accent-blue">Projects</span>
           </h2>
         </motion.div>
 
         <div className="grid-custom grid-cols-2-custom">
           {[
-            { type: 'Freelance', name: 'Advanced LMS Platform', desc: 'Developed administration modules, implemented role-based access control, reporting, and progress tracking for a complex Learning Management System ecosystem.', tags: ['Laravel', 'ReactJS', 'SQL Server', 'REST API'] },
-            { type: 'Enterprise', name: 'Internal Ops Systems (ESUHAI)', desc: 'Built backend supporting HR & massive business operations. Improved system reliability and speed remarkably through heavy refactoring and PostgreSQL scaling.', tags: ['Laravel', 'Vue.js', 'PostgreSQL', 'Redis', 'Docker / K8s'] },
-            { type: 'Freelance', name: 'Enterprise ERP System', desc: 'Participated in developing core ERP modules including Sales, Inventory, Procurement, and Finance. Handled complex business logic handling thousands of transactions.', tags: ['Laravel', 'MySQL', 'REST API'] }
+            { 
+              type: 'Freelance', 
+              name: 'Advanced LMS Platform', 
+              desc: 'Developed administration modules, implemented role-based access control, reporting, and progress tracking for a complex Learning Management System ecosystem.', 
+              tags: ['Laravel', 'ReactJS', 'SQL Server', 'REST API'],
+              img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop'
+            },
+            { 
+              type: 'Enterprise', 
+              name: 'Internal Ops Systems', 
+              desc: 'Built backend supporting HR & massive business operations. Improved system reliability and speed remarkably through heavy refactoring and PostgreSQL scaling.', 
+              tags: ['Laravel', 'Vue.js', 'PostgreSQL', 'Redis'],
+              img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
+            },
+            { 
+              type: 'Freelance', 
+              name: 'Enterprise ERP System', 
+              desc: 'Participated in developing core ERP modules including Sales, Inventory, Procurement, and Finance. Handled complex business logic handling thousands of transactions.', 
+              tags: ['Laravel', 'MySQL', 'REST API'],
+              img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
+            }
           ].map((project) => (
             <motion.div 
               key={project.name}
               variants={FADE_UP}
-              whileHover={{ y: -8, borderColor: 'var(--accent-blue)' }}
-              className="glass-card"
-              style={{ borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
+              whileHover={{ y: -8, borderColor: 'var(--color-accent-blue)' }}
+              className="glass-card rounded-[20px] border border-white/5 relative overflow-hidden flex flex-col p-0 group cursor-pointer"
             >
-              {/* Accent Background Overlay */}
-              <div style={{ position: 'absolute', top: 0, right: 0, width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(67, 97, 238, 0.18) 0%, transparent 70%)', transform: 'translate(30%, -30%)', pointerEvents: 'none' }} />
-
-              <div style={{ display: 'inline-flex', padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.08)', color: 'var(--text-main)', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1rem', width: 'max-content' }}>
-                {project.type}
-              </div>
-              
-              <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.7rem)', color: 'var(--text-main)', marginBottom: '0.8rem', fontWeight: 800 }}>{project.name}</h3>
-              
-              <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)', fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', lineHeight: '1.6', flex: 1 }}>
-                {project.desc}
-              </p>
-              
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {project.tags.map(tag => (
-                  <span key={tag} style={{ color: 'var(--accent-blue)', fontSize: '0.85rem', padding: '0.2rem 0.6rem', border: '1px solid rgba(67, 97, 238, 0.3)', borderRadius: '6px' }}>
-                    {tag}
-                  </span>
-                ))}
+              {/* Project Image */}
+              <div className="w-full h-48 overflow-hidden relative border-b border-white/5">
+                <div className="absolute inset-0 bg-accent-blue/20 group-hover:bg-transparent transition-colors z-10 mix-blend-overlay" />
+                {/* Fallback mockup image using Unsplash */}
+                <img 
+                  src={project.img} 
+                  alt={project.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
               </div>
 
-              <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', cursor: 'pointer', transition: 'color 0.3s' }} className="hover:text-white">
-                <span>View Details</span> <ExternalLink size={16} />
+              <div className="p-6 flex flex-col flex-1 relative">
+                {/* Accent Background Overlay */}
+                <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(67,97,238,0.18)_0%,transparent_70%)] translate-x-[30%] -translate-y-[30%] pointer-events-none" />
+
+                <div className="inline-flex px-4 py-1.5 bg-white/10 text-[var(--text-main)] rounded-full text-sm font-semibold mb-4 w-max">
+                  {project.type}
+                </div>
+                
+                <h3 className="text-[clamp(1.2rem,2.5vw,1.7rem)] text-[var(--text-main)] mb-3 font-extrabold">{project.name}</h3>
+                
+                <p className="mb-6 text-[var(--text-muted)] text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed flex-1">
+                  {project.desc}
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="text-accent-blue text-sm px-2.5 py-1 border border-accent-blue/30 rounded-md">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center gap-2 text-[var(--text-muted)] group-hover:text-white transition-colors font-medium">
+                  <span>View Details</span> <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </motion.div>
           ))}
@@ -370,25 +341,24 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-80px" }}
         variants={STAGGER}
         id="contact" 
-        style={{ paddingTop: 'clamp(4rem, 8vh, 8rem)', paddingBottom: 'clamp(2rem, 4vh, 3rem)', textAlign: 'center' }}
+        className="py-[clamp(4rem,8vh,8rem)] text-center"
       >
         <motion.div variants={FADE_UP}>
-          <div style={{ display: 'inline-block', padding: '1rem', background: 'rgba(157, 78, 221, 0.1)', borderRadius: '50%', marginBottom: '1.5rem' }}>
-            <Mail size={36} color="var(--accent-purple)" />
+          <div className="inline-block p-4 bg-accent-purple/10 rounded-full mb-6">
+            <Mail size={36} className="text-accent-purple" />
           </div>
-          <h2 className="section-heading" style={{ color: 'var(--text-main)', marginBottom: '1rem' }}>Get In Touch</h2>
-          <p style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: 'var(--text-muted)', maxWidth: '580px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
+          <h2 className="section-heading text-[var(--text-main)] mb-4">Get In Touch</h2>
+          <p className="text-[clamp(1rem,2vw,1.15rem)] text-[var(--text-muted)] max-w-[580px] mx-auto mb-10 leading-relaxed">
             I am currently open to new opportunities. Whether you have a question, a project proposal, or just want to say hi, I will try my best to get back to you!
           </p>
           
           <ContactForm />
 
-          <motion.div variants={FADE_UP} style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Prefer sending an email directly?</span>
+          <motion.div variants={FADE_UP} className="mt-10 flex flex-col items-center gap-3">
+            <span className="text-[var(--text-muted)] text-[0.95rem]">Prefer sending an email directly?</span>
             <a 
               href="mailto:nqv171002@gmail.com" 
-              className="hover:text-white"
-              style={{ color: 'var(--accent-cyan)', fontWeight: 600, textDecoration: 'none', borderBottom: '1px dashed var(--accent-cyan)', paddingBottom: '2px', transition: 'all 0.3s' }}
+              className="text-accent-cyan font-semibold decoration-dashed decoration-1 underline-offset-4 hover:text-white hover:underline transition-all"
             >
               nqv171002@gmail.com
             </a>
@@ -397,9 +367,9 @@ export default function HomePage() {
       </motion.section>
 
       {/* Footer */}
-      <footer style={{ marginTop: 'clamp(2rem, 4vh, 5rem)', padding: '2.5rem 0', borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', color: 'var(--text-muted)' }}>
+      <footer className="mt-[clamp(2rem,4vh,5rem)] py-10 border-t border-white/5 text-center text-[var(--text-muted)]">
         <p>Built dynamically with Next.js, Framer Motion, and Tailwind CSS.</p>
-        <p style={{ marginTop: '0.5rem' }}>© 2026 Nguyễn Quốc Việt.</p>
+        <p className="mt-2">© 2026 Nguyễn Quốc Việt.</p>
       </footer>
 
     </div>
